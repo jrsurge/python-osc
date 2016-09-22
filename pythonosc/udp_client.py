@@ -13,6 +13,7 @@ class UDPClient(object):
     given server at ip:port until the send() method is called.
     """
     self._sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    self._sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     self._sock.setblocking(0)
     self._address = address
     self._port = port
